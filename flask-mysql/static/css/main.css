@@ -1,0 +1,190 @@
+body {
+    margin: 10;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 10;
+  padding: 10;
+  width: 80%;
+  table-layout: fixed;
+  table-align: center;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+*{
+  /*Hover everywhere*/
+ margin: 0px; /*Clearing All default values set by browser*/
+padding: 0px;
+}/**/
+body{
+  box-sizing: border-box;
+    background-image: linear-gradient(-454deg,#349d8b,#8e44ad);
+    /*Adding a gradient map of cyan and purple at -454 degree. Gradient is a map in which we add multiple colours is specific angle or direction */
+}
+.Container{
+    margin-left: 500px;
+    display: inline-block;/*Trasforming Block level element to inline block*/
+    margin-top: 100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 40px;
+}
+input[type="text"],/*Slelecting Input types and adding properties*/
+input[type="email"],
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: none;/* removing border of input Box*/
+    border-bottom: 1px solid black ;/*Adding Bottom border instead of border*/
+}
+p{
+    padding: 10px;
+    font-size: 20px;
+    color: #8e44ad;
+    transition: .5s;
+    font-family: 'Fira Code', monospace;/*Changing font family. Taken From Google Fonts*/
+
+}
+p:hover{
+    color: #349d8b;/*Adding Hover Effect To paragraph tags*/
+    transition: .5s;
+    font-size: 22px;
+}
+
+.Heading{
+    font-size: 30px;
+    text-align: center;/*Alining text to center*/
+    font-family: 'Fira Code', monospace;
+    padding: 5px;
+    color: #8e44ad;
+    transition: .5s;
+
+
+}
+.Heading:hover{
+    color: #349d8b;
+    font-size: 35px;
+
+}
+textarea{
+  border-radius: 10px;
+    border: 1px solid black;/*Changing TextArea Style From Border-Bottom to Border */
+}
+.Note{
+    font-size: 15px;
+    font-family: 'Fira Code', monospace;
+    transition: .5s;
+
+}
+.Note:hover{
+    font-size: 17px;
+    font-family: 'Fira Code', monospace;
+}
+.btn{
+    width: 100%;
+    padding: 20px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 500px;
+    background-image: linear-gradient(-454deg,#349d8b,#8e44ad,#349d8b);/*Adding gradient map to "Send" Button*/
+    outline: none;
+    background-size: 200%;
+    transition: .5s;/*Adding transition Time For Hover effect of Send Button*/
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Fira Code', monospace;
+
+}
+.btn:hover{
+    background-position: right;/*Specififng the initial postion of Backgrounf*/
+    font-family: 'Fira Code', monospace;
+
+
+}
+

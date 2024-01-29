@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HOME</title>
+
+{% endblock %}
+
+{% block body %}
+
+
+    <br>
+    <div class="wrapper">
+        <form action="/Update/{{ old_content }}" method="POST" class="Container">
+            <p>Content: <input type="text" name="content" id="content" placeholder="Your content"></p>
+            <button class="btn" value="ADD TASK"> submit</button> <a href="#"></a>
+
+        </form>
+    </div>
+
+
+{% endblock %}
