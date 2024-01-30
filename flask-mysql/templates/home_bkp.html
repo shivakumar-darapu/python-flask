@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HOME</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Added</th>
+            <th>Actions</th>
+        </tr>
+        {% for content, task_date in tasks %}
+        <tr>
+            <td>{{ content }}</td>
+            <td>{{ task_date }}</td>
+            <td>
+                <a href="/Delete/{{ content }}">Delete</a>
+                <br>
+                <a href="/Update/{{ content }}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    <br>
+    <div class="wrapper">
+        <form action="/" method="POST" class="Container">
+            <p>Content: <input type="text" name="content" id="content" placeholder="Your content"></p>
+            <button class="btn" value="ADD TASK"> submit</button> <a href="#"></a>
+
+        </form>
+    </div>
+
+
+{% endblock %}

@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
@@ -11,15 +11,151 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <style>
+            body {
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+              font-family: Arial, sans-serif;
+              perspective: 1000px;
+            }
+            .tab {
+              float: left;
+              border: 1px solid #ccc;
+              background-color: #f0f0f0;
+              width: 30%;
+              height: 100vh;
+            }
+            .book {
+              width: 100vw;
+              height: 100vh;
+              position: relative;
+              transform-style: preserve-3d;
+              transition: transform 0.5s ease-in-out;
+            }
+
+            .page {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color: #f0f0f0;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .page:nth-child(odd) {
+              transform: rotateY(0deg);
+            }
+
+            .page:nth-child(even) {
+              transform: rotateY(360deg);
+            }
+        </style>
+        <script>
+            let flipped = false;
+
+            function flipPage() {
+              const book = document.querySelectorAll('.book');
+              flipped = !flipped;
+              book.style.transform = flipped ? 'rotateY(-360deg)' : 'rotateY(0deg)';
+            }
+            function flipMyPage() {
+              const book = document.getElementById("book");
+              flipped = !flipped;
+              book.style.transform = flipped ? 'rotateY(-360deg)' : 'rotateY(0deg)';
+            }
+
+        </script>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <h1>
-            Hello World
-        </h1>
-        
-        <script src="" async defer></script>
+    <div class="tab" onclick="flipMyPage()" >
+
+    </div>
+    <div class="book" id="book"  style="width= 80%">
+        <div class="page">
+            <section class="container" >
+              <div class="heading">
+                <img class="heading__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg">
+                <h1 class="heading__title">To-Do List</h1>
+              </div>
+              <form action="/" method="POST" class="form">
+                <div>
+                  <label class="form__label" for="todo">~ Today I need to ~</label>
+                  <input class="form__input" type="text" name="content" id="content" size="30" required>
+                  <button value="ADD TASK" class="button"><span>Submit</span></button>
+                </div>
+              </form>
+              <div>
+                <ul class="toDoList">
+                    <div class="wrapper">
+                        <table>
+                            <tr>
+                                <th>Task</th>
+                                <th>Added</th>
+                                <th>Actions</th>
+                            </tr>
+                            {% for content, task_date in tasks %}
+                            <tr>
+                                <td>{{ content }}</td>
+                                <td>{{ task_date }}</td>
+                                <td>
+                                    <a href="/Delete/{{ content }}">Delete</a>
+                                    <br>
+                                    <a href="/Update/{{ content }}">Update</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </ul>
+              </div>
+            </section>
+        </div>
+        <div class="page">
+            <section class="container">
+                  <div class="heading">
+                    <img class="heading__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg">
+                    <h1 class="heading__title">To-Do List</h1>
+                  </div>
+                  <form action="/" method="POST" class="form">
+                    <div>
+                      <label class="form__label" for="todo">~ Today I need to ~</label>
+                      <input class="form__input" type="text" name="content" id="content" size="30" required>
+                      <button value="ADD TASK" class="button"><span>Submit</span></button>
+                    </div>
+                  </form>
+                  <div>
+                    <ul class="toDoList">
+                        <div class="wrapper">
+                            <table>
+                                <tr>
+                                    <th>Task</th>
+                                    <th>Added</th>
+                                    <th>Actions</th>
+                                </tr>
+                                {% for content, task_date in tasks %}
+                                <tr>
+                                    <td>{{ content }}</td>
+                                    <td>{{ task_date }}</td>
+                                    <td>
+                                        <a href="/Delete/{{ content }}">Delete</a>
+                                        <br>
+                                        <a href="/Update/{{ content }}">Update</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </ul>
+                  </div>
+            </section>
+          </div>
+    </div>
+    <div class="tab" onclick="flipMyPage()" >
+
+    </div>
     </body>
 </html>

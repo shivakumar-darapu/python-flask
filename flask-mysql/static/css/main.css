@@ -68,7 +68,7 @@ table th {
     text-align: right;
   }
 
-  table td::before {
+  table td::before {before
     /*
     * aria-label has no advantage, it won't be read inside a table
     content: attr(aria-label);
